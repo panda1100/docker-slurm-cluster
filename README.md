@@ -22,7 +22,7 @@ The slurm version is `v20.02.7`
 Clone the repository
 
 ```
-git checkout git@github.com:xtreme-d/docker-slurm-cluster.git docker-slurm-cluster
+git checkout https://github.com/panda1100/docker-slurm-cluster.git docker-slurm-cluster
 cd docker-slurm-cluster
 ```
 
