@@ -1,3 +1,10 @@
+docker-slurm-sssd
+=================
+
+SSSD(Active Directory configuration) spiced up version of Simple Slurm cluster in docker.
+
+You can manage slurm jobs on your Active Directory managed baremetal compute node with this docker image.
+
 docker-slurm-cluster
 ====================
 
@@ -5,7 +12,7 @@ This is a demonstration of how the Slurm could be deployed in the docker infrast
 
 It consist of the following services:
 - MariaDB (for accounting data)
-- head node (munge, slurmd, slurmctld, slurmdbd)
+- head node (munge, slurmd, slurmctld, slurmdbd, sssd)
 - compute node x4 (munge, slurmd)
 
 The slurm version is `v20.02.7`

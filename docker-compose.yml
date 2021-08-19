@@ -8,6 +8,10 @@ services:
     restart: always
     hostname: axc-headnode
     container_name: axc-headnode
+    ports:
+      - '6817:6817'
+      - '6818:6818'
+      - '6819:6819'
     volumes:
       # support scripts
       - ./bin:/usr/local/bin/
@@ -21,6 +25,7 @@ services:
       - ./conf/supervisor.d/slurmd.ini:/etc/supervisord.d/slurmd.ini
       - ./conf/supervisor.d/slurmdbd.ini:/etc/supervisord.d/slurmdbd.ini
       - ./conf/supervisor.d/slurmctld.ini:/etc/supervisord.d/slurmctld.ini
+      - ./conf/supervisor.d/sssd.ini:/etc/supervisord.d/sssd.ini
       # var
       - ./var/axc:/axc
       - ./var/slurm:/var/spool/slurm
@@ -33,6 +38,12 @@ services:
       MARIADB_PASSWORD: ${CLUSTER_MARIADB_PASSWORD}
       MARIADB_ROOT_PASSWORD: ${CLUSTER_MARIADB_ROOT_PASSWORD}
       CLUSTER_SLURM_NAME: ${CLUSTER_SLURM_NAME}
+      KERBEROS_REALM: ${KERBEROS_REALM}
+      LDAP_USER_SEARCH_BASE: ${LDAP_USER_SEARCH_BASE}
+      LDAP_SEARCH_BASE: ${LDAP_SEARCH_BASE}
+      LDAP_BIND_DN: ${LDAP_BIND_DN}
+      LDAP_BIND_PASSWORD: ${LDAP_BIND_PASSWORD}
+      LDAP_URI: ${LDAP_URI}
     depends_on:
       - mariadb
 

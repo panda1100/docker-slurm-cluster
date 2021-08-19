@@ -47,11 +47,22 @@ RUN chown -R munge: /var/lib/munge /var/run/munge && \
     chmod 0711 /var/lib/munge && \
     chmod 0755 /var/run/munge
 
+RUN rpm --rebuilddb && \
+    yum install -y \
+	        realmd \
+			sssd \
+			adcli \
+			samba-common-tools \
+			krb5-workstation \
+            sssd_krb5 \
+			&& \
+	yum clean all
+
 ADD docker-entrypoint.sh /docker-entrypoint.sh
 
 EXPOSE 6817 6818 6819
 
-VOLUME ["/etc/munge", "/var/spool/slurm"]
+VOLUME ["/etc/munge", "/var/spool/slurm", "/var/lib/sss"]
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
