@@ -80,7 +80,7 @@ ldap_uri = ${LDAP_URI}
 ldap_tls_reqcert = never
 ldap_default_bind_dn = ${LDAP_BIND_DN}
 ldap_default_authtok_type = password
-ldap_default_authtok = ${LDAP_BIND_PASSWORD}"
+ldap_default_authtok = ${LDAP_BIND_PASSWORD}
 EOL
 
   cat >/etc/nsswitch.conf <<EOL
