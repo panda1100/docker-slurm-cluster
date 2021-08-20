@@ -5,6 +5,7 @@ SSSD(Active Directory configuration) spiced up version of Simple Slurm cluster i
 
 You can manage slurm jobs on your Active Directory managed baremetal compute node with this docker image.
 
+
 docker-slurm-cluster
 ====================
 
@@ -29,6 +30,17 @@ cd docker-slurm-cluster
 Next, build the node image.
 ```
 docker-compose build
+```
+
+Edit .env file
+
+```
+KERBEROS_REALM=EXAMPLE.LOCAL
+LDAP_USER_SEARCH_BASE="CN=users,DC=example,DC=local"
+LDAP_SEARCH_BASE="DC=example,DC=local"
+LDAP_URI=ldaps://example.local
+LDAP_BIND_DN="CN=Administrator,CN=users,DC=example,DC=local"
+LDAP_BIND_PASSWORD=STRONG_PASSWORD
 ```
 
 Start the cluster
